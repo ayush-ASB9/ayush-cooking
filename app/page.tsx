@@ -4,6 +4,11 @@ import { useState } from 'react'
 import { ArrowDown, ArrowUpRight, ChefHat, ExternalLink, Menu, X } from 'lucide-react'
 import { chapters, projects, testimonial } from '@/lib/content'
 
+const formatDateStamp = (date: Date) =>
+  [date.getMonth() + 1, date.getDate(), date.getFullYear() % 100]
+    .map((part) => String(part).padStart(2, '0'))
+    .join('.')
+
 const navItems = [
   ['story', '#story'],
   ["what i've cooked", '#projects'],
@@ -71,7 +76,7 @@ export default function Page() {
 
       <section className="thinking-section section-pad" id="thinking" aria-labelledby="thinking-title"><div className="eyebrow">04 / notes from the counter</div><div className="thinking-grid"><h2 id="thinking-title">how i think<br /><em>(or at least how i seem to work)</em></h2><div className="thinking-list">{['i learn by exploring things that interest me, even before i understand them.','i research unfamiliar markets and industries.','i reach out to people instead of only consuming content.','i turn ideas into experiments.','i challenge assumptions, including my own.','i enjoy trying to disprove startup ideas rather than blindly validating them.','i work with people who know things i don’t.','i keep building even when a previous project fails.'].map((item, index) => <div className="thinking-item" key={item}><span>{String(index + 1).padStart(2, '0')}</span><p>{item}</p></div>)}</div></div></section>
 
-      <section className="now-section section-pad" id="now" aria-labelledby="now-title"><div className="now-card"><div className="eyebrow">05 / open chapter</div><h2 id="now-title">the unfinished part<span className="accent-dot">.</span></h2><p>THEOFF9 is in stealth. ASB9 Club is being built. i&apos;m exploring quant research, technology, financial markets, startups, and whatever else captures my attention.</p><p>i&apos;m still in school and still figuring things out. which is probably why this page keeps changing.</p><div className="now-stamp">still cooking<br /><strong>10.25.26</strong></div></div></section>
+      <section className="now-section section-pad" id="now" aria-labelledby="now-title"><div className="now-card"><div className="eyebrow">05 / open chapter</div><h2 id="now-title">the unfinished part<span className="accent-dot">.</span></h2><p>THEOFF9 is in stealth. ASB9 Club is being built. i&apos;m exploring quant research, technology, financial markets, startups, and whatever else captures my attention.</p><p>i&apos;m still in school and still figuring things out. which is probably why this page keeps changing.</p><div className="now-stamp">still cooking<br /><strong>{formatDateStamp(new Date())}</strong></div></div></section>
 
       <footer className="footer section-pad" id="contact"><div className="footer-top"><div><div className="eyebrow">06 / leave a note</div><h2>want to challenge<br />an idea together?</h2></div><p>if you&apos;re building something and want someone to challenge it instead of blindly validating it, drop me a dm. unless you&apos;re scared of course.</p></div><div className="footer-bottom"><a className="wordmark" href="#top"><ChefHat size={19} strokeWidth={1.5} /><span>ayush<span className="wordmark-dot">.</span>cooking</span></a><div className="footer-links"><span>links to be configured</span><a href="#contact">ASB9 Club <ExternalLink size={13} /></a></div><span className="copyright">© 2026 / still in progress</span></div></footer>
     </main>
