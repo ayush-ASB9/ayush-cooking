@@ -68,7 +68,7 @@ export default function Page() {
         <div className="eyebrow">01 / the kitchen</div>
         <div className="domain-copy">
           <h2 id="domain-title">so before i start the story u hv a doubt right why the hell the domain is <span>ayush.cooking</span></h2>
-          <div className="domain-answer"><p>well cuz i am always cooking sometimes food sometimes startup ideas sometimes reaserch soemtimes exparimants</p><p>the domain was expensive. my kidneys are still safe, but i did spend my lifetime savings to buy it. so now i have to make it count, i guess.</p><SectionLinks links={[{ label: 'visit ASB9 Insights', href: externalLinks.insights }, { label: 'visit ihate.study', href: externalLinks.ihateStudy }]} /></div>
+          <div className="domain-answer"><p>well cuz i am always cooking sometimes food sometimes startup ideas sometimes reaserch soemtimes exparimants</p><p>the domain was expensive. my kidneys are still safe, but i did spend my lifetime savings to buy it. so now i have to make it count, i guess.</p><SectionLinks links={[{ label: 'visit ASB9 Insights', href: externalLinks.insights }, { label: 'visit ihate.study', href: externalLinks.ihateStudy }, { label: 'visit THEOFF9', href: externalLinks.theoff9 }, { label: 'visit ASB9 Club', href: externalLinks.club }]} /></div>
         </div>
       </section>
 
