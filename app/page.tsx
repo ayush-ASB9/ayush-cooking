@@ -17,6 +17,17 @@ const navItems = [
   ['contact', '#contact'],
 ]
 
+const externalLinks = {
+  insights: 'https://asb9insights.substack.com',
+  theoff9: 'https://theoff9.xyz',
+  club: 'https://asb9.club',
+  ihateStudy: 'https://ihate.study',
+}
+
+function SectionLinks({ links }: { links: { label: string; href: string }[] }) {
+  return <div className="section-links" aria-label="Related links">{links.map((link) => <a key={link.href} href={link.href} target="_blank" rel="noreferrer">{link.label}<ArrowUpRight size={13} /></a>)}</div>
+}
+
 export default function Page() {
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -57,7 +68,7 @@ export default function Page() {
         <div className="eyebrow">01 / the kitchen</div>
         <div className="domain-copy">
           <h2 id="domain-title">so before i start the story u hv a doubt right why the hell the domain is <span>ayush.cooking</span></h2>
-          <div className="domain-answer"><p>well cuz i am always cooking sometimes food sometimes startup ideas sometimes reaserch soemtimes exparimants</p><p>the domain was expensive. my kidneys are still safe, but i did spend my lifetime savings to buy it. so now i have to make it count, i guess.</p></div>
+          <div className="domain-answer"><p>well cuz i am always cooking sometimes food sometimes startup ideas sometimes reaserch soemtimes exparimants</p><p>the domain was expensive. my kidneys are still safe, but i did spend my lifetime savings to buy it. so now i have to make it count, i guess.</p><SectionLinks links={[{ label: 'visit ASB9 Insights', href: externalLinks.insights }, { label: 'visit ihate.study', href: externalLinks.ihateStudy }]} /></div>
         </div>
       </section>
 
@@ -65,18 +76,18 @@ export default function Page() {
         <div className="section-heading"><div className="eyebrow">02 / the long version</div><h2 id="story-title">the story so far<span className="accent-dot">.</span></h2><p>not a perfectly linear career story. more like a trail of rabbit holes, half-built things, uncomfortable conversations, and a few things that actually worked.</p></div>
         <div className="story-layout">
           <aside className="story-index" aria-label="Story chapters"><span>contents</span>{chapters.map((chapter) => <a key={chapter.number} href={`#chapter-${chapter.number}`}>{chapter.number} <i>{chapter.title}</i></a>)}</aside>
-          <div className="chapters">{chapters.map((chapter) => <article className="chapter" id={`chapter-${chapter.number}`} key={chapter.number}><div className="chapter-meta"><span>{chapter.number}</span><span className="chapter-rule" /></div><div className="chapter-body"><h3>{chapter.title}</h3>{chapter.paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}{chapter.note && <p className="margin-note">{chapter.note}</p>}{chapter.number === '07' && <a className="inline-link" href="#projects">visit the idea graveyard <ArrowUpRight size={14} /></a>}{chapter.number === '08' && <blockquote className="testimonial"><p>“{testimonial.quote}”</p><cite>{testimonial.person}, {testimonial.role}</cite></blockquote>}{chapter.number === '09' && <p className="invitation">if you&apos;re building something and want someone to challenge it instead of blindly validating it, drop me a dm. unless you&apos;re scared of course.</p>}</div></article>)}</div>
+          <div className="chapters">{chapters.map((chapter) => <article className="chapter" id={`chapter-${chapter.number}`} key={chapter.number}><div className="chapter-meta"><span>{chapter.number}</span><span className="chapter-rule" /></div><div className="chapter-body"><h3>{chapter.title}</h3>{chapter.paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}{chapter.note && <p className="margin-note">{chapter.note}</p>}{chapter.number === '07' && <><a className="inline-link" href="#projects">visit the idea graveyard <ArrowUpRight size={14} /></a><p className="story-aside">i hate studying, so naturally i ended up buying <a href={externalLinks.ihateStudy} target="_blank" rel="noreferrer">ihate.study</a>.</p></>}{chapter.number === '08' && <blockquote className="testimonial"><p>“{testimonial.quote}”</p><cite>{testimonial.person}, {testimonial.role}</cite></blockquote>}{chapter.number === '09' && <p className="invitation">if you&apos;re building something and want someone to challenge it instead of blindly validating it, drop me a dm. unless you&apos;re scared of course.</p>}</div></article>)}</div>
         </div>
       </section>
 
       <section className="projects-section section-pad" id="projects" aria-labelledby="projects-title">
         <div className="section-heading split-heading"><div><div className="eyebrow">03 / the archive</div><h2 id="projects-title">things i&apos;ve cooked<span className="accent-dot">.</span></h2></div><p>some are alive. some are not. some are still sitting on the counter while i figure out what they are.</p></div>
-        <div className="project-list">{projects.map(([name, status, description], index) => <article className="project-row" key={name}><span className="project-number">{String(index + 1).padStart(2, '0')}</span><div className="project-main"><h3>{name}</h3><p>{description}</p></div><span className={`status status-${status}`}>{status}</span></article>)}</div>
+        <div className="project-list">{projects.map(([name, status, description], index) => <article className="project-row" key={name}><span className="project-number">{String(index + 1).padStart(2, '0')}</span><div className="project-main"><h3>{name}</h3><p>{description}</p></div><span className={`status status-${status}`}>{status}</span></article>)}</div><SectionLinks links={[{ label: 'visit THEOFF9', href: externalLinks.theoff9 }, { label: 'visit ASB9 Club', href: externalLinks.club }]} />
       </section>
 
       <section className="thinking-section section-pad" id="thinking" aria-labelledby="thinking-title"><div className="eyebrow">04 / notes from the counter</div><div className="thinking-grid"><h2 id="thinking-title">how i think<br /><em>(or at least how i seem to work)</em></h2><div className="thinking-list">{['i learn by exploring things that interest me, even before i understand them.','i research unfamiliar markets and industries.','i reach out to people instead of only consuming content.','i turn ideas into experiments.','i challenge assumptions, including my own.','i enjoy trying to disprove startup ideas rather than blindly validating them.','i work with people who know things i don’t.','i keep building even when a previous project fails.'].map((item, index) => <div className="thinking-item" key={item}><span>{String(index + 1).padStart(2, '0')}</span><p>{item}</p></div>)}</div></div></section>
 
-      <section className="now-section section-pad" id="now" aria-labelledby="now-title"><div className="now-card"><div className="eyebrow">05 / open chapter</div><h2 id="now-title">the unfinished part<span className="accent-dot">.</span></h2><p>THEOFF9 is in stealth. ASB9 Club is being built. i&apos;m exploring quant research, technology, financial markets, startups, and whatever else captures my attention.</p><p>i&apos;m still in school and still figuring things out. which is probably why this page keeps changing.</p><div className="now-stamp">still cooking<br /><strong>{formatDateStamp(new Date())}</strong></div></div></section>
+      <section className="now-section section-pad" id="now" aria-labelledby="now-title"><div className="now-card"><div className="eyebrow">05 / open chapter</div><h2 id="now-title">the unfinished part<span className="accent-dot">.</span></h2><p>THEOFF9 is in stealth. ASB9 Club is being built. i&apos;m exploring quant research, technology, financial markets, startups, and whatever else captures my attention.</p><p>i&apos;m still in school and still figuring things out. which is probably why this page keeps changing.</p><SectionLinks links={[{ label: 'visit THEOFF9', href: externalLinks.theoff9 }, { label: 'visit ASB9 Club', href: externalLinks.club }]} /><div className="now-stamp">still cooking<br /><strong>{formatDateStamp(new Date())}</strong></div></div></section>
 
       <footer className="footer section-pad" id="contact"><div className="footer-top"><div><div className="eyebrow">06 / leave a note</div><h2>want to challenge<br />an idea together?</h2></div><p>if you&apos;re building something and want someone to challenge it instead of blindly validating it, drop me a dm. unless you&apos;re scared of course.</p></div><div className="footer-bottom"><a className="wordmark" href="#top"><ChefHat size={19} strokeWidth={1.5} /><span>ayush<span className="wordmark-dot">.</span>cooking</span></a><div className="footer-links" aria-label="External links"><a href="mailto:ayushsingh160909@gmail.com">Email <ExternalLink size={13} /></a><a href="https://www.linkedin.com/in/ayushasb9" target="_blank" rel="noreferrer">LinkedIn <ExternalLink size={13} /></a><a href="https://x.com/HLV_Ayush" target="_blank" rel="noreferrer">X <ExternalLink size={13} /></a><a href="https://asb9insights.substack.com" target="_blank" rel="noreferrer">Substack <ExternalLink size={13} /></a><a href="https://patents.google.com/patent/US9600688B2/en" target="_blank" rel="noreferrer">Graveyard reference <ExternalLink size={13} /></a><a href="https://asb9.club" target="_blank" rel="noreferrer">ASB9 Club <ExternalLink size={13} /></a><a href="https://theoff9.xyz" target="_blank" rel="noreferrer">THEOFF9 <ExternalLink size={13} /></a><a href="https://ihate.study" target="_blank" rel="noreferrer">ihate.study <ExternalLink size={13} /></a></div><span className="copyright">© 2026 / still in progress</span></div></footer>
     </main>
