@@ -51,6 +51,7 @@ export default function Page() {
         <div className="hero-grid">
           <div>
             <h1 id="hero-title">i&apos;m ayush.<br /><em>i&apos;m 17.</em><br />and i&apos;m always<br /><span className="accent-word">cooking</span> something.</h1>
+            <p className="hero-intro">i&apos;m a strategy generalist.</p>
             <p className="hero-intro">startups, research, fundraising, technology, and the occasional attempt to understand what the hell i&apos;m doing.</p>
             <div className="hero-actions"><a className="button button-dark" href="#story">read the story <ArrowDown size={15} /></a><a className="text-link" href="#projects">browse the experiments <ArrowUpRight size={15} /></a></div>
           </div>
