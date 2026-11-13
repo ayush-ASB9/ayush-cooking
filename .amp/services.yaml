@@ -1,0 +1,5 @@
+services:
+  web:
+    command: pnpm dev --port "$PORT" --hostname 127.0.0.1
+    portal:
+      title: ayush.cooking dev server
